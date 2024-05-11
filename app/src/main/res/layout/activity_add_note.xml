@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gray"
     tools:context=".AddNote">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+<androidx.appcompat.widget.Toolbar
+android:id="@+id/toolbar"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@color/dark_gray"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/IVbackarrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                app:srcCompat="@drawable/baseline_arrow_back_24" />
+<ImageView
+android:id="@+id/IVbackarrow"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="start"
+android:padding="8dp"
+app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-            <ImageView
-                android:id="@+id/IVcheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:padding="8dp"
-                android:layout_marginEnd="14dp"
-                app:srcCompat="@drawable/baseline_check_24" />
-        </RelativeLayout>
-
-
+<ImageView
+android:id="@+id/IVcheck"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="end"
+android:padding="8dp"
+app:srcCompat="@drawable/baseline_check_24" />
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/ETtitle"
-        android:layout_width="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@null"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Title"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <EditText
-        android:id="@+id/ETnote"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="26dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:hint="Start Typing"
-        android:background="@null"
-        android:gravity="top"
-        android:lineSpacingMultiplier="1.2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ETtitle"
-        app:layout_constraintStart_toStartOf="@+id/ETtitle"
-        app:layout_constraintTop_toBottomOf="@+id/ETtitle" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<EditText
+android:id="@+id/ETtitle"
+android:layout_width="0dp"
+android:layout_height="48dp"
+android:layout_marginStart="16dp"
+android:layout_marginTop="16dp"
+android:layout_marginEnd="16dp"
+android:background="@drawable/edit_text_background"
+    android:fontFamily="@font/aclonica"
+    android:hint="@string/enter_title"
+    android:padding="8dp"
+    android:textColor="@color/white"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+<EditText
+android:id="@+id/ETnote"
+android:layout_width="0dp"
+android:layout_height="0dp"
+android:layout_marginTop="16dp"
+android:background="@drawable/edit_text_background"
+    android:ems="10"
+    android:fontFamily="@font/actor"
+    android:gravity="top"
+    android:hint="@string/start_typing_your_note_here"
+    android:inputType="textMultiLine"
+    android:lineSpacingMultiplier="1.2"
+    android:padding="8dp"
+    android:textColor="@color/white"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@+id/ETtitle"
+    app:layout_constraintStart_toStartOf="@+id/ETtitle"
+    app:layout_constraintTop_toBottomOf="@+id/ETtitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
