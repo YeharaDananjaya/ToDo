@@ -9,7 +9,7 @@ import com.example.ToDo.Database.NotesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class NoteViewModel(application: Application) : AndroidViewModel(application) {
+class ToDoViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: NotesRepository
 

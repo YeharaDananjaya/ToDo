@@ -10,9 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ToDo.Models.Note
 import com.example.ToDo.R
-import kotlin.random.Random
 
-class NotesAdapter(private val context: Context, val listener: NotesClickListener) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
+class ToDoAdapter(private val context: Context, val listener: NotesClickListener) : RecyclerView.Adapter<ToDoAdapter.NoteViewHolder>() {
 
     private val notesList = ArrayList<Note>()
     private val fullList = ArrayList<Note>()

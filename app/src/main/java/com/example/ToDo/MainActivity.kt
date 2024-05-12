@@ -3,28 +3,25 @@ package com.example.ToDo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.SearchView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.ToDo.Adapter.NotesAdapter
+import com.example.ToDo.Adapter.ToDoAdapter
 import com.example.ToDo.Database.NotesDatabase
 import com.example.ToDo.Models.Note
-import com.example.ToDo.Models.NoteViewModel
+import com.example.ToDo.Models.ToDoViewModel
 import com.example.ToDo.databinding.ActivityMainBinding
-import java.util.*
 
-class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, PopupMenu.OnMenuItemClickListener {
+class MainActivity : AppCompatActivity(), ToDoAdapter.NotesClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var database: NotesDatabase
-    private lateinit var viewModel: NoteViewModel
-    private lateinit var adapter: NotesAdapter
+    private lateinit var viewModel: ToDoViewModel
+    private lateinit var adapter: ToDoAdapter
     private lateinit var selectedNote: Note
 
     private val updateNote = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -46,7 +43,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, Popup
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(NoteViewModel::class.java)
+        ).get(ToDoViewModel::class.java)
 
         viewModel.allnotes.observe(this) { list ->
             list?.let {
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, Popup
     private fun initUI() {
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayout.VERTICAL)
-        adapter = NotesAdapter(this, this)
+        adapter = ToDoAdapter(this, this)
         binding.recyclerView.adapter = adapter
 
         val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -130,25 +127,8 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, Popup
         updateNote.launch(intent)
     }
 
-    fun onLongItemClicked(note: Note, cardView: CardView) {
-        selectedNote = note
-        popUpDisplay(cardView)
-    }
 
-    private fun popUpDisplay(cardView: CardView) {
-        val popup = PopupMenu(this, cardView)
-        popup.setOnMenuItemClickListener(this)
-        popup.inflate(R.menu.pop_up_menu)
-        popup.show()
-    }
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.delete_note) {
-            viewModel.deleteNote(selectedNote)
-            return true
-        }
-        return false
-    }
 
     // Implement the new method onDeleteButtonClicked from NotesClickListener interface
     override fun onDeleteButtonClicked(note: Note) {
